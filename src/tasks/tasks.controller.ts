@@ -1,3 +1,4 @@
+import { TaskStatusValidationPipe } from './pipes/task-status-validation.pipe';
 import { CreateTaskDto } from './dto/create-tasks.dto';
 import { Task, TaskStatus } from './tasks.model';
 import { TasksService } from './tasks.service';
@@ -35,7 +36,7 @@ export class TasksController {
     }
 
     @Patch('/:id/status')
-    updateTaskStatus(@Param('id') id: string, @Body('status') status: TaskStatus):Task{
+    updateTaskStatus(@Param('id') id: string, @Body('status', TaskStatusValidationPipe) status: TaskStatus):Task{
         return this.tasksService.updateTaskStatus(id,status);
     }
 }

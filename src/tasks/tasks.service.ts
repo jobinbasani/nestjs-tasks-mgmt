@@ -1,3 +1,4 @@
+import { User } from './../auth/user.entity';
 import { TaskRepository } from './task.repository';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-tasks.dto';
@@ -25,9 +26,9 @@ export class TasksService {
         return task;
     }
 
-    createTask(createTaskDto: CreateTaskDto):Promise<Task>{
+    createTask(createTaskDto: CreateTaskDto, user:User):Promise<Task>{
         
-        return this.taskRepository.createTask(createTaskDto);
+        return this.taskRepository.createTask(createTaskDto, user);
     }
 
     async deleteTaskById(id: number):Promise<void> {

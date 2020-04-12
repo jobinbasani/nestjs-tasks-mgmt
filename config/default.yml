@@ -5,6 +5,7 @@ db:
     type: 'postgres'
     port: 5432
     database: 'taskmanagement'
+    entities: /../**/*.entity.{js,ts}
 
 jwt:
     expiresIn: 3600
